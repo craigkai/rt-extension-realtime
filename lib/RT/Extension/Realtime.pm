@@ -5,34 +5,12 @@ package RT::Extension::Realtime;
 our $VERSION = '0.01';
 
 RT->AddJavaScript(
-    'supabase-js.js',
-    'rt-extension-realtime.js',
-    'bundle.js'
+    'bundle.umd.js'
 );
 
 RT->AddStyleSheets(
-    'bundle.css'
+    # 'bundle.css'
 );
-
-# <script src=" https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js "></script>
-# <script>
-#     // Initialize the JS client
-#     const { createClient } = supabase
-#     const _supabase = createClient('http://127.0.0.1:54321', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn_I0')
-    
-#     // Create a function to handle inserts
-#     const handleInserts = (payload) => {
-#       console.log('Change received!', payload)
-#     }
-
-#     const filter = 'id=eq.<% $TicketObj->Id %>';
-
-#     // Listen to inserts
-#     _supabase
-#       .channel('tickets')
-#       .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'tickets', filter: filter }, handleInserts)
-#       .subscribe()
-#     </script>
 
 =head1 NAME
 

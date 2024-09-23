@@ -46,4 +46,8 @@
 %#
 %# END BPS TAGGED BLOCK }}}
 
-<div id="svelte-app"></div>
+<script>
+    window.props = <% JSON( $ARGS{'defaults'} ) |n %>;
+</script>
+
+<div id="svelte-edit-basics"></div>

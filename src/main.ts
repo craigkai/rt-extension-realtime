@@ -1,16 +1,18 @@
+import { mount } from 'svelte';
 import './app.css';
-import App from './App.svelte';
-
-let appInstance;
+import EditBasics from './lib/Ticket/EditBasics.svelte';
 
 window.onload = () => {
-  const target = document.getElementById('svelte-app');
-  if (target) {
-    appInstance = new App({ target });
-  } else {
-    console.error('Target element not found');
-  }
-};
+  const components = [
+    { selector: '#svelte-edit-basics', Component: EditBasics },
+  ];
 
-// Export the app instance
-export { appInstance };
+  components.forEach(({ selector, Component }) => {
+    const target = document.querySelector(selector);
+    console.log(window?.props)
+
+    if (target) {
+      mount(Component, { target, props: window?.props || {} });
+    }
+  });
+};

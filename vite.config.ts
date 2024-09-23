@@ -1,23 +1,20 @@
 import { defineConfig } from 'vite'
 import { svelte } from '@sveltejs/vite-plugin-svelte'
+import { sveltePreprocess } from 'svelte-preprocess'
+
+import path from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [svelte()],
-   build: {
+  plugins: [svelte({ preprocess: sveltePreprocess({ typescript: true }) })],
+  build: {
+    lib: {
+        entry: path.resolve('src/main.ts'),
+        name: 'Component',
+        formats: ["umd", "es"],
+        fileName: (format) => `js/bundle.${format}.js`
+    },
     emptyOutDir: false,
     outDir: 'static/',
-    rollupOptions: {
-       input: {
-        // Ensure that Vite processes files according to your needs
-        main: 'src/main.ts', // or your main entry point
-      },
-      output: {
-        entryFileNames: 'js/bundle.js', // Name for the main JS file
-        assetFileNames:() => {
-          return 'css/bundle.css'; // Name pattern for other assets
-        },
-      },
-    },
   }
 })

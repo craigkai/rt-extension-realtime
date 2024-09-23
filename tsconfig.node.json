@@ -6,7 +6,12 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
     "strict": true,
-    "noEmit": true
+    // "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+    // here is the default $lib setup by SvelteKit
+      "$lib/*": ["src/lib/*"]
+    }
   },
   "include": ["vite.config.ts"]
 }
